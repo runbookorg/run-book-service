@@ -9,7 +9,7 @@ module.exports = {
     },
     googleAccountFromCode: (parent, args, context, info) => {
       console.log("--== googleAccountFromCode ", args);
-      return googleApisAuthService.getGoogleAccountFromCode(args.code);
+      return googleApisAuthService.getGoogleAccountFromCode(args.code, context);
     }
   }
 };

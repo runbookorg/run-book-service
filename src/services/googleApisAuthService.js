@@ -1,4 +1,5 @@
 const { google } = require("googleapis");
+const personService = require("./personService");
 
 /*******************/
 /** CONFIGURATION **/
@@ -57,7 +58,7 @@ const getGoogleApisUrl = function() {
 /**
  * Part 2: Take the "code" parameter which Google gives us once when the user logs in, then get the user's email and id.
  */
-const getGoogleAccountFromCode = async function(code) {
+const getGoogleAccountFromCode = async function(code, context) {
   const auth = createConnection();
   const data = await auth.getToken(code);
   const tokens = data.tokens;
@@ -67,6 +68,18 @@ const getGoogleAccountFromCode = async function(code) {
   const userGoogleId = me.data.id;
   const userGoogleEmail =
     me.data.emails && me.data.emails.length && me.data.emails[0].value;
+  console.log('-- Google Account ', me.data)
+  const person = await personService.createPerson(
+    {
+      data: {
+        id: userGoogleId,
+        email: userGoogleEmail,
+        name: me.data.name
+      }
+    },
+    context
+  );
+  console.log("--- GoogleAccount ", person);
   return {
     id: userGoogleId,
     email: userGoogleEmail,

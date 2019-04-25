@@ -1,14 +1,13 @@
 const { forwardTo } = require("prisma-binding");
-const personService = require("./../../../services/personService");
 
 module.exports = {
   Mutation: {
-    createPerson: (parent, args, context, info) => {
-      console.log("--== createPerson ", args);
-      return personService.createPerson(args, context);
-    }
+    updatePerson:  forwardTo("db"),
+    deleteManyPersons: forwardTo("db"),
+    deletePerson: forwardTo("db"),
   },
   Query: {
-    persons: forwardTo("db")
+    persons: forwardTo("db"),
+    person: forwardTo("db")
   }
 };

@@ -1,12 +1,8 @@
-const { GraphQLServer } = require("graphql-yoga");
-// const { buildSchema } = require("graphql");
 require("dotenv").config({ path: "variables.env" });
+const { GraphQLServer } = require("graphql-yoga");
 
 const typeDefs = require("./graphql/types/index");
 const resolvers = require("./graphql/resolvers/index");
-
-console.log('--- typeDefs ', typeDefs)
-
 const db = require("./graphql/db");
 
 const server = new GraphQLServer({
