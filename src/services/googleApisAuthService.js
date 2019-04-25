@@ -6,10 +6,9 @@ const personService = require("./personService");
 /*******************/
 
 const googleConfig = {
-  clientId:
-    "393822512743-4soa52k7h8put1jqcr9n7qiobgukrpqi.apps.googleusercontent.com",
-  clientSecret: "pqIfa5e2PbfAqRIqGKJ-UMDZ",
-  redirect: "http://localhost:3000/home"
+  clientId: process.env.clientId,
+  clientSecret: process.env.clientSecret,
+  redirect: process.env.redirect
 };
 
 const defaultScope = [
@@ -68,7 +67,7 @@ const getGoogleAccountFromCode = async function(code, context) {
   const userGoogleId = me.data.id;
   const userGoogleEmail =
     me.data.emails && me.data.emails.length && me.data.emails[0].value;
-  console.log('-- Google Account ', me.data)
+  console.log("-- Google Account ", me.data);
   const person = await personService.createPerson(
     {
       data: {
