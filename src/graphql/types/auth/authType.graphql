@@ -1,0 +1,14 @@
+type GoogleAuth {
+  url: String!
+}
+
+type GoogleAccount {
+  id: String!
+  email: String!
+  tokens: [String!]!
+}
+
+type Query {
+  googleApisUrl: GoogleAuth!
+  googleAccountFromCode(code: String!): GoogleAccount!
+}

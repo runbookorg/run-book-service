@@ -1,0 +1,26 @@
+type Person {
+  id: ID! @id
+  googleId: String!
+  name: String!
+  email: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type OrganizationUnit {
+  id: ID! @id
+  name: String!
+  contactPersonId: ID!
+  location: String!
+  address: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type OrgUnitPerson {
+  id: ID! @id
+  personId: ID
+  orgUnitId: ID
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
