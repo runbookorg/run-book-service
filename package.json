@@ -20,7 +20,6 @@
     "dotenv": "^7.0.0",
     "googleapis": "^39.2.0",
     "graphql": "^14.2.1",
-    "graphql-cli": "^3.0.11",
     "graphql-import": "^0.7.1",
     "graphql-yoga": "^1.17.4",
     "lodash": "^4.17.11",
